@@ -12,29 +12,32 @@ whichRep -- how to express the valid choices to the users
 inputFunction - function to call to get input from user
 verify - how to validate user input
 """
+
+
 def get_choice(message, which, whichRep, inputFunction=input, verifyFunction=None):
     def verify(retVal, choices):
         if retVal not in choices:
             print('ERROR: invalid choice--enter ' + whichRep)
             input('Please press enter...')
-            return False 
+            return False
         return True
 
     if verifyFunction == None:
         verifyFunction = verify
-        
+
     hold = []
     for each in which:
         try:
             hold.append(str(each))
         except ValueError as err:
             print(err)
-            
+
     ret = inputFunction(message)
 
     while not verifyFunction(ret, hold) or ret == '':
         ret = inputFunction(message)
     return ret
+
 
 """fake_loading_bars
 Procedurally print a loading bar, just for funsies.
@@ -46,6 +49,8 @@ lineLength -- the length of the line
 sleep -- thelength of time to sleep between each print
 activities -- the list of things to 'load'
 """
+
+
 def fake_loading_bars(low, high, lineLength, sleep, *activities):
     print('-' * lineLength)
     for k in activities:
@@ -56,7 +61,7 @@ def fake_loading_bars(low, high, lineLength, sleep, *activities):
         sys.stdout.flush()
         timing = random.randint(low, high)
         for _ in range(lineLength - len(k)):
-            time.sleep(timing / length) 
+            time.sleep(timing / length)
             print('\u25A0', end='')
             sys.stdout.flush()
         time.sleep(sleep)

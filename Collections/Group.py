@@ -14,6 +14,8 @@ codomain -- if you want to group domain values with another set
 exclusion -- groupings to forbid
 symmetric - whether pairings should apply in both directions
 """
+
+
 def group(domain, codomain=None, exclusion=None, symmetric=False):
     if exclusion is None:
         exclusion = defaultdict(list)
@@ -29,10 +31,10 @@ def group(domain, codomain=None, exclusion=None, symmetric=False):
         if len(codomain) != (size - 1 ) * len(domain):
             print("Size issues")
             return'''
-    
+
     if codomain is None:
         codomain = copy.deepcopy(domain)
-    
+
     results = defaultdict(list)
     print(domain)
     for each in domain:
@@ -40,7 +42,7 @@ def group(domain, codomain=None, exclusion=None, symmetric=False):
         for _ in range(1):
             if (codomain != exclusion[each] + [each]
                 and codomain != [each]
-                and codomain != exclusion[each]):
+                    and codomain != exclusion[each]):
 
                 person = random.choice(codomain)
                 while person in exclusion[each] + [each]:
@@ -53,8 +55,9 @@ def group(domain, codomain=None, exclusion=None, symmetric=False):
                     domain.remove(each)'''
             else:
                 raise Exception('No possible transitions')
-            
+
     return results
+
 
 if __name__ == "__main__":
     import doctest

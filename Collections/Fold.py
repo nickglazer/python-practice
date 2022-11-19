@@ -6,6 +6,8 @@ func -- function that takes 2 arguments
 initial -- initial value for the base case
 xs - Iterable collection
 """
+
+
 def foldr(func, initial, xs):
     '''
     >>> foldr(lambda acc, x: [x] + acc, [], [1, 2, 3, 4])
@@ -20,6 +22,7 @@ def foldr(func, initial, xs):
 
     return foldrr(func, initial, iter(xs))
 
+
 """foldl implemented on iterables
 ('a * 'b -> 'b) -> 'b -> 'a list -> 'b
 
@@ -28,6 +31,8 @@ func -- function that takes 2 arguments
 initial -- initial value for the base case
 xs - Iterable collection
 """
+
+
 def foldl(func, initial, xs):
     '''
     >>> foldl(lambda acc, x: [x] + acc, [], [1, 2, 3, 4])
@@ -41,6 +46,7 @@ def foldl(func, initial, xs):
             return initial
 
     return foldlr(func, initial, iter(xs))
+
 
 if __name__ == "__main__":
     import doctest

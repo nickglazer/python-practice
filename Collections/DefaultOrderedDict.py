@@ -5,6 +5,8 @@ import copy
 
 Adds defaults to the collections.OrderedDict
 """
+
+
 class DefaultOrderedDict(OrderedDict):
     '''
     >>> defaultOrderedDict = DefaultOrderedDict('Default')
@@ -12,10 +14,11 @@ class DefaultOrderedDict(OrderedDict):
     >>> defaultOrderedDict[1]
     'Default'
     '''
+
     def __init__(self, default):
         OrderedDict.__init__(self)
         self.default = default
-                
+
     def __getitem__(self, key):
         if key in self:
             return self[key]
@@ -29,9 +32,10 @@ class DefaultOrderedDict(OrderedDict):
 
     def __deepcopy__(self, memo):
         return DefaultOrderedDict(copy.deepcopy(self.default, memo))
-    
-    def __repr__(self):       
+
+    def __repr__(self):
         return OrderedDict.__repr__(self) + ', Default: ' + repr(self.default)
+
 
 if __name__ == "__main__":
     import doctest

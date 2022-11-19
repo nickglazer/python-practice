@@ -1,3 +1,5 @@
+from Console.Printing import fake_loading_bars
+from Collections.Group import group
 import copy
 from collections import OrderedDict, defaultdict
 import random
@@ -6,8 +8,6 @@ import time
 
 sys.path.append('../')
 
-from Collections.Group import group
-from Console.Printing import fake_loading_bars
 
 print()
 fake_loading_bars(0, 4, 80, 0.5, 'Booting')
@@ -21,7 +21,7 @@ couples = defaultdict(list)
 give = []
 
 s = input()
-while(s != ''):
+while (s != ''):
     if len(s.split(' ')) > 1:
         split = s.split(' ')
         couples[split[0]] = [split[1]]
@@ -32,12 +32,13 @@ while(s != ''):
     s = input()
 
 results = group(give, exclusion=couples)
-    
-fake_loading_bars(0, 4, 80, 0.5, 'Decorating Christmas Tree', 'Packing Sleigh', 'Baking Christmas Cookies', 'Making Toys')
+
+fake_loading_bars(0, 4, 80, 0.5, 'Decorating Christmas Tree',
+                  'Packing Sleigh', 'Baking Christmas Cookies', 'Making Toys')
 print()
 print('{:10}'.format('Giving'), '===', '{:>10}'.format('Receiving'))
 print('-' * 25)
-for k,v in results.items():
+for k, v in results.items():
     print('{:10}'.format(k), '===', '{:>10}'.format(v[0]))
 print()
 print('*' * 80)
